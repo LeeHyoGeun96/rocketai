@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 
 export default function Header() {
-  const pathname = usePathname();
+  const router = useRouter();
 
   const activeLinkStyle = "underline underline-offset-4 decoration-sky-500";
 
@@ -15,7 +15,7 @@ export default function Header() {
           <Link
             href="/"
             className={`text-2xl hover:text-sky-600 transition-colors ${
-              pathname === "/" ? activeLinkStyle : ""
+              router.pathname === "/" ? activeLinkStyle : ""
             }`}
           >
             Home
@@ -25,7 +25,7 @@ export default function Header() {
           <Link
             href="/custom"
             className={`text-2xl hover:text-sky-600 transition-colors ${
-              pathname === "/custom" ? activeLinkStyle : ""
+              router.pathname === "/custom" ? activeLinkStyle : ""
             }`}
           >
             Custom
