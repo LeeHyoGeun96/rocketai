@@ -1,13 +1,31 @@
-"use client";
-
-import { useUserStore } from "@/store/userStore";
+import { WebtoonContainer } from "@/components/WebtoonContainer";
+import { WebtoonImage } from "@/components/WebtoonImage";
+import { imageSizes } from "@/constants/bluemoonladysaju/imageSizes";
 
 export default function Home() {
-  const userData = useUserStore((state) => state.userData);
-
   return (
-    <main className="flex flex-col max-w-md w-full h-full bg-red-500 mx-auto">
-      안녕하세요 {userData.name}님
-    </main>
+    <WebtoonContainer>
+      <WebtoonImage
+        src="/resultPage/bluemoonladysaju/1.png"
+        alt="webtoon"
+        originalWidth={imageSizes["/resultPage/bluemoonladysaju/1.png"].width}
+        originalHeight={imageSizes["/resultPage/bluemoonladysaju/1.png"].height}
+        priority={true}
+      />
+      <WebtoonImage
+        src="/resultPage/bluemoonladysaju/2.png"
+        alt="webtoon"
+        originalWidth={imageSizes["/resultPage/bluemoonladysaju/2.png"].width}
+        originalHeight={imageSizes["/resultPage/bluemoonladysaju/2.png"].height}
+        customClassName="w-[80%]"
+      />
+      <WebtoonImage
+        src="/resultPage/bluemoonladysaju/3.png"
+        alt="webtoon"
+        originalWidth={imageSizes["/resultPage/bluemoonladysaju/3.png"].width}
+        originalHeight={imageSizes["/resultPage/bluemoonladysaju/3.png"].height}
+        topM={-80}
+      />
+    </WebtoonContainer>
   );
 }
