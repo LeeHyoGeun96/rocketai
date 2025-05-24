@@ -24,7 +24,7 @@ export default function Home() {
         alt="webtoon"
         originalWidth={imageSizes["/resultPage/bluemoonladysaju/3.png"].width}
         originalHeight={imageSizes["/resultPage/bluemoonladysaju/3.png"].height}
-        topM={-80}
+        topM={"-19%"}
       />
     </WebtoonContainer>
   );
