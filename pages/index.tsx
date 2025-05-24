@@ -1,6 +1,6 @@
-import { SpeechBubbleText } from "@/components/SpeechBubbleText";
-import { WebtoonContainer } from "@/components/WebtoonContainer";
-import { WebtoonImage } from "@/components/WebtoonImage";
+import { SpeechBubbleText } from "@/components/UI/Webtoon/SpeechBubbleText";
+import { WebtoonContainer } from "@/components/UI/Webtoon/WebtoonContainer";
+import { WebtoonImage } from "@/components/UI/Webtoon/WebtoonImage";
 import { imageSizes } from "@/constants/bluemoonladysaju/imageSizes";
 
 export default function Home() {
