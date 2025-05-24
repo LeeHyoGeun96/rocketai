@@ -1,3 +1,4 @@
+import { SpeechBubbleText } from "@/components/SpeechBubbleText";
 import { WebtoonContainer } from "@/components/WebtoonContainer";
 import { WebtoonImage } from "@/components/WebtoonImage";
 import { imageSizes } from "@/constants/bluemoonladysaju/imageSizes";
@@ -11,7 +12,9 @@ export default function Home() {
         originalWidth={imageSizes["/resultPage/bluemoonladysaju/1.png"].width}
         originalHeight={imageSizes["/resultPage/bluemoonladysaju/1.png"].height}
         priority={true}
-      />
+      >
+        <SpeechBubbleText imageId="1" />
+      </WebtoonImage>
       <WebtoonImage
         src="/resultPage/bluemoonladysaju/2.png"
         alt="webtoon"
@@ -25,7 +28,9 @@ export default function Home() {
         originalWidth={imageSizes["/resultPage/bluemoonladysaju/3.png"].width}
         originalHeight={imageSizes["/resultPage/bluemoonladysaju/3.png"].height}
         topM={"-19%"}
-      />
+      >
+        <SpeechBubbleText imageId="3" />
+      </WebtoonImage>
     </WebtoonContainer>
   );
 }

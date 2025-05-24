@@ -8,9 +8,10 @@ export interface WebtoonImageProps {
   topM?: string;
   bottomM?: string;
   customClassName?: string; // 이 클래스가 이미지 컨테이너의 크기를 제어합니다.
-  originalWidth: number; // aspect-ratio 계산 및 sizes prop에 사용
-  originalHeight: number; // aspect-ratio 계산에 사용
+  originalWidth: number;
+  originalHeight: number;
   priority?: boolean; // 중요한 이미지(LCP)에 true 설정
+  children?: React.ReactNode;
 }
 
 export function WebtoonImage({
@@ -23,6 +24,7 @@ export function WebtoonImage({
   topM = "0",
   bottomM = "0",
   priority = false,
+  children,
 }: WebtoonImageProps) {
   return (
     <div
@@ -46,6 +48,7 @@ export function WebtoonImage({
               33vw
               "
       />
+      {children}
     </div>
   );
 }
