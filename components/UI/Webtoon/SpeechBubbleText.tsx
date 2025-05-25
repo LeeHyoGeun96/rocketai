@@ -10,6 +10,7 @@ interface SpeechBubbleTextProps {
   sort?: "left" | "right" | "center";
   maxFontSize?: number;
   minFontSize?: number;
+  paragraphSpacing?: string;
 }
 
 export const SpeechBubbleText = ({
@@ -18,6 +19,7 @@ export const SpeechBubbleText = ({
   sort = "center",
   maxFontSize = 16,
   minFontSize = 12,
+  paragraphSpacing = "0",
 }: SpeechBubbleTextProps) => {
   const { name } = useUserStore((state) => state.userData);
   const { text, top, left, right, bottom } = speechBubbleMap[imageId](name);
@@ -46,8 +48,8 @@ export const SpeechBubbleText = ({
       {lines.map((line, index) => (
         <p
           key={index}
-          className={`leading-snug break-words mb-0`}
-          style={{ fontSize }}
+          className={`leading-snug break-words`}
+          style={{ fontSize, marginBottom: paragraphSpacing }}
         >
           {line === "" ? "\u00A0" : line}
         </p>
