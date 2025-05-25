@@ -15,15 +15,15 @@ export const SpeechBubbleText = ({
   sort = "center",
 }: SpeechBubbleTextProps) => {
   const { name } = useUserStore((state) => state.userData);
-  const { text, top, left, width, fontSizeClass } =
+  const { text, top, left, right, bottom, fontSizeClass } =
     speechBubbleMap[imageId](name);
-  const textToSplit = text;
-  const lines = textToSplit.split("\n");
+  const lines = text.split("\n");
 
-  const inlineStyle: React.CSSProperties = {
-    ...(top && { top }),
-    ...(left && { left }),
-    ...(width && { width }),
+  const positionStyle: React.CSSProperties = {
+    top: top ?? "auto",
+    left: left ?? "auto",
+    right: right ?? "auto",
+    bottom: bottom ?? "auto",
   };
 
   const textAlignClass = {
@@ -35,12 +35,12 @@ export const SpeechBubbleText = ({
   return (
     <div
       className={`absolute w-fit ${className} ${textAlignClass}`}
-      style={inlineStyle}
+      style={positionStyle}
     >
       {lines.map((line, index) => (
         <p
           key={index}
-          className={` ${fontSizeClass || ""} leading-snug break-words mb-0`}
+          className={` ${fontSizeClass} leading-snug break-words mb-0`}
         >
           {line === "" ? "\u00A0" : line}
         </p>

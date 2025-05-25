@@ -3,7 +3,8 @@ export const speechBubbleMap: {
     text: string;
     top?: string;
     left?: string;
-    width?: string;
+    right?: string;
+    bottom?: string;
     fontSizeClass?: string; // ✅ 클래스 이름으로 변경
   };
 } = {
