@@ -1,12 +1,15 @@
 "use client";
 
-import { speechBubbleMap } from "@/constants/bluemoonladysaju/speechBubbleMap";
 import { useUserStore } from "@/store/userStore";
 import { generateClampFontSize } from "@/utils/generateClampFontSize";
+import {
+  ImagePath,
+  webtoonImagesMeta,
+} from "@/constants/bluemoonladysaju/webtoonImagesMeta";
 
 interface SpeechBubbleTextProps {
   className?: string;
-  imageId: string;
+  imagePath: ImagePath;
   sort?: "left" | "right" | "center";
   maxFontSize?: number;
   minFontSize?: number;
@@ -15,21 +18,23 @@ interface SpeechBubbleTextProps {
 
 export const SpeechBubbleText = ({
   className = "",
-  imageId,
+  imagePath,
   sort = "center",
   maxFontSize = 16,
   minFontSize = 12,
   paragraphSpacing = "0",
 }: SpeechBubbleTextProps) => {
   const { name } = useUserStore((state) => state.userData);
-  const speechBubble = speechBubbleMap[imageId]?.(name);
+  const bubble = webtoonImagesMeta[imagePath].bubble;
 
-  if (!speechBubble) {
-    console.warn(`Speech bubble not found for imageId: ${imageId}`);
+  if (!bubble) {
+    console.warn(`Speech bubble not found for imagePath: ${imagePath}`);
     return null;
   }
 
-  const { text, top, left, right, bottom } = speechBubble;
+  const text = bubble.text(name);
+  const { top, left, right, bottom } = bubble;
+
   const lines = text.split("\n");
 
   const positionStyle: React.CSSProperties = {
