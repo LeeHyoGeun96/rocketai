@@ -1,15 +1,17 @@
 // components/WebtoonImage.tsx
+import {
+  ImagePath,
+  webtoonImagesMeta,
+} from "@/constants/bluemoonladysaju/webtoonImagesMeta";
 import Image from "next/image";
 
 export interface WebtoonImageBlockProps {
-  src: string;
+  src: ImagePath;
   alt?: string;
   zIndex?: string;
   topM?: string;
   bottomM?: string;
-  customClassName?: string; // 이 클래스가 이미지 컨테이너의 크기를 제어합니다.
-  originalWidth: number;
-  originalHeight: number;
+  customClassName?: string;
   priority?: boolean; // 중요한 이미지(LCP)에 true 설정
   children?: React.ReactNode;
 }
@@ -18,14 +20,15 @@ export function WebtoonImageBlock({
   src,
   alt = "",
   customClassName = "",
-  originalWidth,
-  originalHeight,
   zIndex = "0",
   topM = "0",
   bottomM = "0",
   priority = false,
   children,
 }: WebtoonImageBlockProps) {
+  const { width: originalWidth, height: originalHeight } =
+    webtoonImagesMeta[src];
+
   return (
     <div
       className={`relative block  ${customClassName || "w-full"}`}
