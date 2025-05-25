@@ -1,7 +1,7 @@
 // components/WebtoonImage.tsx
 import Image from "next/image";
 
-export interface WebtoonImageProps {
+export interface WebtoonImageBlockProps {
   src: string;
   alt?: string;
   zIndex?: string;
@@ -14,7 +14,7 @@ export interface WebtoonImageProps {
   children?: React.ReactNode;
 }
 
-export function WebtoonImage({
+export function WebtoonImageBlock({
   src,
   alt = "",
   customClassName = "",
@@ -25,7 +25,7 @@ export function WebtoonImage({
   bottomM = "0",
   priority = false,
   children,
-}: WebtoonImageProps) {
+}: WebtoonImageBlockProps) {
   return (
     <div
       className={`relative block  ${customClassName || "w-full"}`}
