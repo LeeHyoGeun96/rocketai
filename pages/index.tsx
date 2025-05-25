@@ -16,7 +16,7 @@ export default function Home() {
           }
           priority={true}
         >
-          <SpeechBubbleText imageId="1" sort="left" />
+          <SpeechBubbleText imageId="1" maxFontSize={20} minFontSize={1} />
         </WebtoonImage>
         <WebtoonImage
           src="/resultPage/bluemoonladysaju/2.png"
@@ -36,7 +36,7 @@ export default function Home() {
           }
           topM={"-19%"}
         >
-          <SpeechBubbleText imageId="3" />
+          <SpeechBubbleText imageId="3" maxFontSize={20} minFontSize={1} />
         </WebtoonImage>
       </WebtoonContainer>
     </>

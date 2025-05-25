@@ -9,7 +9,7 @@ export function WebtoonContainer({
 }: WebtoonContainerProps) {
   return (
     <div
-      className={`relative max-w-md mx-auto flex flex-col items-center w-full ${className}`}
+      className={`max-w-md mx-auto flex flex-col items-center w-full ${className}`}
       style={{
         containerType: "inline-size",
       }}
