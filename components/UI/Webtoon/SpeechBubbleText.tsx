@@ -22,23 +22,31 @@ export const SpeechBubbleText = ({
   paragraphSpacing = "0",
 }: SpeechBubbleTextProps) => {
   const { name } = useUserStore((state) => state.userData);
-  const { text, top, left, right, bottom } = speechBubbleMap[imageId](name);
+  const speechBubble = speechBubbleMap[imageId]?.(name);
+
+  if (!speechBubble) {
+    console.warn(`Speech bubble not found for imageId: ${imageId}`);
+    return null;
+  }
+
+  const { text, top, left, right, bottom } = speechBubble;
   const lines = text.split("\n");
 
   const positionStyle: React.CSSProperties = {
-    top: top ?? "auto",
-    left: left ?? "auto",
-    right: right ?? "auto",
-    bottom: bottom ?? "auto",
+    ...(top && { top }),
+    ...(left && { left }),
+    ...(right && { right }),
+    ...(bottom && { bottom }),
   };
 
-  const textAlignClass = {
-    left: "text-left",
-    right: "text-right",
-    center: "text-center",
-  }[sort];
-
   const fontSize = generateClampFontSize(minFontSize, maxFontSize);
+
+  const textAlignClass =
+    sort === "left"
+      ? "text-left"
+      : sort === "right"
+      ? "text-right"
+      : "text-center";
 
   return (
     <div
@@ -48,10 +56,10 @@ export const SpeechBubbleText = ({
       {lines.map((line, index) => (
         <p
           key={index}
-          className={`leading-snug break-words`}
+          className="leading-snug break-words"
           style={{ fontSize, marginBottom: paragraphSpacing }}
         >
-          {line === "" ? "\u00A0" : line}
+          {line || "\u00A0"}
         </p>
       ))}
     </div>
