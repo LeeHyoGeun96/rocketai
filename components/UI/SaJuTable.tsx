@@ -1,52 +1,14 @@
-import { generateClampFontSize } from "@/utils/generateClampFontSize";
-
-const FONT_HEADER_STYLE = { fontSize: generateClampFontSize(1, 28) }; // 기존 text-2xl 대체
-const FONT_TITLE_HANJA_STYLE = { fontSize: generateClampFontSize(1, 16) }; // 행 제목 한자
-const FONT_TITLE_HANGLE_STYLE = { fontSize: generateClampFontSize(1, 12) }; // 행 제목 한글 (기존 text-xs)
-const FONT_CELL_MAIN_LABEL_STYLE = { fontSize: generateClampFontSize(1, 16) }; // 셀 메인 라벨 (한자 등)
-const FONT_CELL_SUB_LABEL_STYLE = { fontSize: generateClampFontSize(1, 12) }; // 셀 서브 라벨 (한글, 기존 text-xs)
-const FONT_CELL_KOREAN_LABEL_STYLE = {
-  fontSize: generateClampFontSize(1, 12),
-}; // 셀 한글 간단 표기 (기존 text-xs)
-const FONT_CELL_ELEMENT_STYLE = { fontSize: generateClampFontSize(1, 14) }; // 오행 표시
-
-// 패딩 (셀 내부 여백) - generateClampFontSize 함수를 패딩 값 생성에도 활용
-const CELL_PADDING_STYLE = {
-  padding: `${generateClampFontSize(1, 8)} ${generateClampFontSize(1, 10)}`,
-}; // 상하, 좌우
-const HEADER_CELL_PADDING_STYLE = {
-  padding: `${generateClampFontSize(1, 12)} ${generateClampFontSize(1, 14)}`,
-};
-
-interface SaJuColumnData {
-  // Props에서 사용되므로, 간단한 형태라도 정의가 필요할 수 있습니다.
-  label?: string;
-  subLabel?: string;
-  koreanLabel?: string;
-  elementLabel?: string;
-  labelArray?: string[];
-  subLabelArray?: string[];
-}
-
-interface SaJuColumn {
-  hour?: SaJuColumnData;
-  day?: SaJuColumnData;
-  month?: SaJuColumnData;
-  year?: SaJuColumnData;
-}
-interface SaJuData {
-  tenStar: SaJuColumn;
-  heavenlyStems: SaJuColumn;
-  earthlyBranches: SaJuColumn;
-  secondTenStar: SaJuColumn;
-  twelveUnseong: SaJuColumn;
-  twelveShinsal: SaJuColumn;
-  noblePeople: SaJuColumn;
-}
-
-interface Props {
-  data: SaJuData;
-}
+import {
+  CELL_PADDING_STYLE,
+  FONT_CELL_ELEMENT_STYLE,
+  FONT_CELL_KOREAN_LABEL_STYLE,
+  FONT_CELL_MAIN_LABEL_STYLE,
+  FONT_CELL_SUB_LABEL_STYLE,
+  FONT_HEADER_STYLE,
+  FONT_TITLE_HANGLE_STYLE,
+  FONT_TITLE_HANJA_STYLE,
+  HEADER_CELL_PADDING_STYLE,
+} from "@/constants/layoutConstants";
 
 const headers = ["", "時", "日", "月", "年"];
 
@@ -124,7 +86,11 @@ const renderRow = (
   );
 };
 
-export default function SaJuTable({ data }: Props) {
+interface SaJuTableProps {
+  data: SaJuData;
+}
+
+export default function SaJuTable({ data }: SaJuTableProps) {
   return (
     <div
       className=" w-full h-auto grid grid-rows-[auto_auto_auto_auto_auto_auto_auto_auto] " // row 높이 auto로 변경 고려
@@ -139,7 +105,7 @@ export default function SaJuTable({ data }: Props) {
             className={`flex justify-center items-center ${
               i === 0
                 ? "border-r-2 border-black"
-                : i === 4
+                : i === headers.length - 1
                 ? "border-r-2 border-black"
                 : "border-r"
             }`}
