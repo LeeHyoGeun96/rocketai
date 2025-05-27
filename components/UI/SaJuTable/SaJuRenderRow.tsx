@@ -3,27 +3,25 @@ import SaJuLabelCell from "./SaJuLabelCell";
 import { TIME_KEYS } from "@/constants/SaJuTable/SaJuTableMeta";
 
 interface SaJuRenderRowProps {
+  index: number;
   title: { hanjaTitle: string; hangleTitle: string };
   row: SaJuColumn;
   theme: ThemeSpecificStyles;
-  customRowBottomBorder?: string;
 }
 
 export default function SaJuRenderRow({
   title,
   row,
   theme,
-  customRowBottomBorder,
+  index,
 }: SaJuRenderRowProps) {
   return (
-    <div
-      className={`${theme.rowWrapperBaseClassName} ${
-        customRowBottomBorder || theme.rowDefaultBottomBorderClassName
-      }`}
-    >
+    <div style={{ ...theme.getRowCellStyle(index) }}>
       <div
-        className={`${theme.rowTitleCellClassName} flex items-center justify-center`}
-        style={SaJuPaddingStyles.cell}
+        style={{
+          ...SaJuPaddingStyles.cell,
+          ...theme.getRowTitleCellStyle(index),
+        }}
       >
         <p style={SaJuFontStyles.titleHanja}>{title.hanjaTitle}</p>
         <p style={SaJuFontStyles.titleHangle}>({title.hangleTitle})</p>

@@ -15,10 +15,14 @@ export default function SaJuTable({
   const currentTheme = themes[themeName];
 
   return (
-    <div
-      className={`${currentTheme.tableWrapperClassName} grid grid-rows-[repeat(${ROWS.length},_auto)]`}
-    >
-      <div className={currentTheme.headerWrapperClassName}>
+    <div>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "minmax(100px, auto) repeat(4, 1fr)",
+          borderBottom: "2px solid black",
+        }}
+      >
         {headers.map((head, i) => (
           <div
             key={i}
@@ -32,13 +36,13 @@ export default function SaJuTable({
         ))}
       </div>
 
-      {ROWS.map(({ title, dataKey, customStyle }) => (
+      {ROWS.map(({ index, title, dataKey }) => (
         <SaJuRenderRow
           key={dataKey}
+          index={index}
           title={title}
           row={data[dataKey]}
           theme={currentTheme}
-          customRowBottomBorder={customStyle}
         />
       ))}
     </div>

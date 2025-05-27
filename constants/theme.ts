@@ -1,8 +1,4 @@
 export const cheongwolTheme: ThemeSpecificStyles = {
-  tableWrapperClassName: "w-full h-auto",
-
-  headerWrapperClassName: "grid grid-cols-5 border-b-2 border-t-0 border-black",
-
   getHeaderCellStyle: (index: number, totalHeaders: number) => {
     const baseStyle: React.CSSProperties = {
       display: "flex",
@@ -16,12 +12,26 @@ export const cheongwolTheme: ThemeSpecificStyles = {
     return baseStyle;
   },
 
-  rowWrapperBaseClassName: "grid grid-cols-5 text-center",
+  getRowCellStyle: (index: number) => {
+    const baseStyle: React.CSSProperties = {
+      display: "grid",
+      gridTemplateColumns: "minmax(100px, auto) repeat(4, 1fr)",
+      borderBottom: index === 1 ? "1px solid black" : "2px solid black",
+    };
+    return baseStyle;
+  },
 
-  rowDefaultBottomBorderClassName: "border-b-2 border-black",
-
-  rowTitleCellClassName:
-    "flex flex-col items-center justify-center border-r-2 border-black bg-transparent",
+  getRowTitleCellStyle: () => {
+    const baseStyle: React.CSSProperties = {
+      flex: 1,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      borderRight: "2px solid black",
+    };
+    return baseStyle;
+  },
 
   getRowDataCellStyle: (index: number, totalDataCells = 4) => {
     const baseStyle: React.CSSProperties = {
