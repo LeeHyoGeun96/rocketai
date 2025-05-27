@@ -9,118 +9,118 @@ import {
   FONT_TITLE_HANJA_STYLE,
   HEADER_CELL_PADDING_STYLE,
 } from "@/constants/layoutConstants";
+import { DEFAULT_THEME_NAME, themes } from "@/constants/theme";
 
 const headers = ["", "時", "日", "月", "年"];
 
-const renderRow = (
-  title: { hanjaTitle: string; hangleTitle: string },
-  row: SaJuColumn,
-  borderStyle = "border-b-2" // 기본 보더 스타일 유지
-) => {
-  const { hanjaTitle, hangleTitle } = title;
-  return (
-    <div
-      className={`grid grid-cols-5 ${borderStyle} border-black bg-[#fdfdfb] text-center `}
-    >
-      <div
-        className=" flex flex-col items-center justify-center border-r-2 border-black"
-        style={CELL_PADDING_STYLE} // 행 제목 셀 패딩 적용
-      >
-        <p style={FONT_TITLE_HANJA_STYLE}>{hanjaTitle}</p>
-        <p style={FONT_TITLE_HANGLE_STYLE}>({hangleTitle})</p>
-      </div>
-      {["hour", "day", "month", "year"].map((key, idx) => {
-        const cell = row[key as keyof SaJuColumn];
-
-        return (
-          <div
-            key={idx}
-            className={` border-r ${
-              idx === 3 ? `border-r-2 border-black` : ``
-            } flex items-center justify-center `}
-            style={CELL_PADDING_STYLE} // 데이터 셀 패딩 적용
-          >
-            {cell && (
-              <div className="flex flex-col items-center justify-center ">
-                {/* 한글 간단 표기 */}
-                {cell.koreanLabel && (
-                  <p style={FONT_CELL_KOREAN_LABEL_STYLE}>{cell.koreanLabel}</p>
-                )}
-
-                {/* labelArray + subLabelArray 쌍으로 출력 */}
-                {cell.labelArray && cell.subLabelArray ? (
-                  cell.labelArray.map((label, i) => (
-                    <div key={i} className="flex flex-col items-center">
-                      <p style={FONT_CELL_MAIN_LABEL_STYLE}>{label}</p>
-                      <p style={FONT_CELL_SUB_LABEL_STYLE}>
-                        ({cell.subLabelArray?.[i]})
-                      </p>
-                    </div>
-                  ))
-                ) : (
-                  <>
-                    {cell.label && (
-                      <p style={FONT_CELL_MAIN_LABEL_STYLE}>{cell.label}</p>
-                    )}
-                    {cell.subLabel && (
-                      <p style={FONT_CELL_SUB_LABEL_STYLE}>({cell.subLabel})</p>
-                    )}
-                  </>
-                )}
-
-                {/* 오행 (elementLabel) */}
-                {cell.elementLabel && (
-                  <p
-                    style={FONT_CELL_ELEMENT_STYLE}
-                    className="flex flex-col items-center justify-center "
-                  >
-                    {cell.elementLabel}
-                  </p>
-                )}
-              </div>
-            )}
-          </div>
-        );
-      })}
-    </div>
-  );
-};
-
 interface SaJuTableProps {
   data: SaJuData;
+  themeName?: string;
 }
 
-export default function SaJuTable({ data }: SaJuTableProps) {
+// 생략된 import와 인터페이스
+
+export default function SaJuTable({
+  data,
+  themeName = DEFAULT_THEME_NAME,
+}: SaJuTableProps) {
+  const currentTheme = themes[themeName];
+
+  const renderRow = (
+    title: { hanjaTitle: string; hangleTitle: string },
+    row: SaJuColumn,
+    customRowBottomBorder?: string
+  ) => {
+    const bottomBorderStyle =
+      customRowBottomBorder || currentTheme.rowDefaultBottomBorderClassName;
+
+    return (
+      <div
+        className={`${currentTheme.rowWrapperBaseClassName} ${bottomBorderStyle}`}
+      >
+        <div
+          className={`${currentTheme.rowTitleCellClassName} flex items-center justify-center`}
+          style={CELL_PADDING_STYLE}
+        >
+          <p style={FONT_TITLE_HANJA_STYLE}>{title.hanjaTitle}</p>
+          <p style={FONT_TITLE_HANGLE_STYLE}>({title.hangleTitle})</p>
+        </div>
+        {["hour", "day", "month", "year"].map((key, idx) => {
+          const cell = row[key as keyof SaJuColumn];
+          const dataCellStyle = {
+            ...currentTheme.getRowDataCellStyle(idx, 4),
+            ...CELL_PADDING_STYLE,
+          };
+
+          return (
+            <div key={idx} style={dataCellStyle}>
+              {cell && (
+                <div className="flex flex-col items-center justify-center">
+                  {cell.koreanLabel && (
+                    <p style={FONT_CELL_KOREAN_LABEL_STYLE}>
+                      {cell.koreanLabel}
+                    </p>
+                  )}
+
+                  {cell.labelArray?.length ? (
+                    cell.labelArray.map((label, i) => (
+                      <div key={i} className="flex flex-col items-center">
+                        <p style={FONT_CELL_MAIN_LABEL_STYLE}>{label}</p>
+                        {cell.subLabelArray?.[i] && (
+                          <p style={FONT_CELL_SUB_LABEL_STYLE}>
+                            ({cell.subLabelArray[i]})
+                          </p>
+                        )}
+                      </div>
+                    ))
+                  ) : (
+                    <>
+                      {cell.label && (
+                        <p style={FONT_CELL_MAIN_LABEL_STYLE}>{cell.label}</p>
+                      )}
+                      {cell.subLabel && (
+                        <p style={FONT_CELL_SUB_LABEL_STYLE}>
+                          ({cell.subLabel})
+                        </p>
+                      )}
+                    </>
+                  )}
+
+                  {cell.elementLabel && (
+                    <p style={FONT_CELL_ELEMENT_STYLE}>{cell.elementLabel}</p>
+                  )}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
   return (
     <div
-      className=" w-full h-auto grid grid-rows-[auto_auto_auto_auto_auto_auto_auto_auto] " // row 높이 auto로 변경 고려
+      className={`${currentTheme.tableWrapperClassName} grid grid-rows-[repeat(8,_auto)]`}
     >
-      {/* Header */}
-      <div className="grid grid-cols-5 border-b-2 border-t-0 border-black">
-        {" "}
-        {/* text-2xl 제거 */}
+      <div className={currentTheme.headerWrapperClassName}>
         {headers.map((head, i) => (
           <div
             key={i}
-            className={`flex justify-center items-center ${
-              i === 0
-                ? "border-r-2 border-black"
-                : i === headers.length - 1
-                ? "border-r-2 border-black"
-                : "border-r"
-            }`}
-            style={HEADER_CELL_PADDING_STYLE}
+            style={{
+              ...currentTheme.getHeaderCellStyle(i, headers.length),
+              ...HEADER_CELL_PADDING_STYLE,
+            }}
           >
             {head && <span style={FONT_HEADER_STYLE}>{head}</span>}
           </div>
         ))}
       </div>
 
-      {/* Row Components */}
       {renderRow({ hanjaTitle: "十星", hangleTitle: "십성" }, data.tenStar)}
       {renderRow(
         { hanjaTitle: "天干", hangleTitle: "천간" },
-        data.heavenlyStems
+        data.heavenlyStems,
+        "border-b border-black"
       )}
       {renderRow(
         { hanjaTitle: "地支", hangleTitle: "지지" },
