@@ -1,5 +1,5 @@
-import { SaJuFontStyles, SaJuPaddingStyles } from "@/constants/layoutConstants";
-import SaJuLabelCell from "./SaJuLabelCell";
+import { SaJuFontStyles } from "@/constants/layoutConstants";
+import SaJuCell from "./SaJuCell";
 import { TIME_KEYS } from "@/constants/SaJuTable/SaJuTableMeta";
 
 interface SaJuRenderRowProps {
@@ -19,12 +19,13 @@ export default function SaJuRenderRow({
     <div style={{ ...theme.getRowCellStyle(index) }}>
       <div
         style={{
-          ...SaJuPaddingStyles.cell,
           ...theme.getRowTitleCellStyle(index),
         }}
       >
         <p style={SaJuFontStyles.titleHanja}>{title.hanjaTitle}</p>
-        <p style={SaJuFontStyles.titleHangle}>({title.hangleTitle})</p>
+        <p style={{ ...SaJuFontStyles.titleHangle, textAlign: "center" }}>
+          ({title.hangleTitle})
+        </p>
       </div>
 
       {TIME_KEYS.map((key, idx) => {
@@ -34,10 +35,9 @@ export default function SaJuRenderRow({
             key={key}
             style={{
               ...theme.getRowDataCellStyle(idx, TIME_KEYS.length),
-              ...SaJuPaddingStyles.cell,
             }}
           >
-            <SaJuLabelCell cell={cell} />
+            <SaJuCell cell={cell} />
           </div>
         );
       })}

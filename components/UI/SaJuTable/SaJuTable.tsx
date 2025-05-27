@@ -1,6 +1,10 @@
 import { DEFAULT_THEME_NAME, themes } from "@/constants/theme";
 import SaJuRenderRow from "./SaJuRenderRow";
-import { SaJuFontStyles, SaJuPaddingStyles } from "@/constants/layoutConstants";
+import {
+  SaJuFontStyles,
+  SaJuGridStyles,
+  SaJuPaddingStyles,
+} from "@/constants/layoutConstants";
 import { headers, ROWS } from "@/constants/SaJuTable/SaJuTableMeta";
 
 interface SaJuTableProps {
@@ -19,7 +23,7 @@ export default function SaJuTable({
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "minmax(100px, auto) repeat(4, 1fr)",
+          gridTemplateColumns: SaJuGridStyles.row.gridTemplateColumns,
           borderBottom: "2px solid black",
         }}
       >

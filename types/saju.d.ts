@@ -38,4 +38,6 @@ interface ThemeSpecificStyles {
   ) => React.CSSProperties;
 
   getRowTitleCellStyle: (index: number) => React.CSSProperties;
+
+  getElementCellStyle: (elementLabel: string) => React.CSSProperties;
 }
