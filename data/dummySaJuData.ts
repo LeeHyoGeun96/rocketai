@@ -33,9 +33,9 @@ export const dummySaJu: SaJuData = {
     year: { label: "六害殺", subLabel: "육해살" },
   },
   noblePeople: {
-    hour: { label: "(없음)" },
-    day: { label: "(없음)" },
-    month: { label: "(없음)" },
+    hour: { subLabel: "없음" },
+    day: { subLabel: "없음" },
+    month: { subLabel: "없음" },
     year: {
       labelArray: ["天乙貴人", "太極貴人", "文曲貴人", "月德貴人"],
       subLabelArray: ["천을", "태극", "문곡", "월덕"],
