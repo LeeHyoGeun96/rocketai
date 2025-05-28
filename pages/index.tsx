@@ -1,8 +1,6 @@
-// 경로: pages/index.tsx (또는 SSG로 만들고 싶은 페이지 파일)
-
 import dynamic from "next/dynamic";
-import Head from "next/head"; // 페이지 <head> 관리를 위해 import
-import type { GetStaticProps, NextPage } from "next"; // Next.js 타입 import
+import Head from "next/head";
+import type { GetStaticProps, NextPage } from "next";
 
 // UI 컴포넌트 import
 import SaJuTableBackGround from "@/components/UI/SaJuTable/SaJuTableBackGround";
@@ -14,15 +12,11 @@ import { WebtoonDecorativeElement } from "@/components/UI/Webtoon/WebtoonDecorat
 
 import { imagePaths } from "@/constants/bluemoonladysaju/imagePaths";
 import Spinner from "@/components/UI/common/Spinner";
-// 만약 webtoonTextMeta에서 텍스트를 가져와 getStaticProps에서 props로 전달하고 싶다면 import
-// import { webtoonTextMeta } from "@/constants/bluemoonladysaju/webtoonTextMeta";
 
-// CSR로 SaJuTable 렌더링 (컴포넌트 외부, 파일 상단에 정의)
 const SaJuTableClient = dynamic(
   () => import("@/components/UI/SaJuTable/SaJuTableClient"),
   {
     ssr: false,
-    // 로딩 중 UI (선택적)
     loading: () => <Spinner />,
   }
 );
@@ -31,11 +25,8 @@ const SaJuTableClient = dynamic(
 interface HomePageProps {
   pageTitle: string;
   pageDescription: string;
-  // 필요하다면 다른 정적 데이터 (예: SSG 시점에 렌더링할 텍스트 내용 등)
-  // summaryText1?: string;
 }
 
-// SSG를 위한 getStaticProps 함수
 export const getStaticProps: GetStaticProps<HomePageProps> = async (
   _context
 ) => {
