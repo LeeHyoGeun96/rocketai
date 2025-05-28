@@ -1,7 +1,17 @@
+import Image from "next/image";
+
 export default function Spinner() {
   return (
     <div className="flex justify-center items-center py-10">
-      <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-blue-500 border-opacity-50"></div>
+      <Image
+        src="/images/bluemoonladysaju/loading/analyzing.png"
+        alt="분석중 이미지"
+        width={1024}
+        height={1536}
+        sizes="(max-width: 768px) 100vw, 512px"
+        className="w-auto max-w-[90%] h-auto"
+        priority
+      />
     </div>
   );
 }
