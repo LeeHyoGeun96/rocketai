@@ -1,7 +1,5 @@
 import { generateClampFontSize } from "@/utils/generateClampFontSize";
 
-export const MAX_WIDTH = 448;
-
 export const SaJuFontStyles = {
   header: { fontSize: generateClampFontSize(1, 20.92) },
   rowTitleHanja: { fontSize: generateClampFontSize(1, 12) },
