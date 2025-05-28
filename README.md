@@ -186,7 +186,7 @@
 - `WebtoonContainer`, `WebtoonBlock`, `WebtoonImageBlock`, `WebtoonText`, `WebtoonDecorativeElement` 등의 컴포넌트로 UI를 분리함으로써 역할이 명확하고 유지보수가 쉬운 구조를 의도했습니다.
 - 모든 요소가 재사용 가능한 단위로 나뉘어 있어, 추후에 이미지나 텍스트 교체만으로 콘텐츠 확장이 용이합니다.
 
-### 7. **웹툰 형식에 맞는 Loading Spinner"**
+### 7. **웹툰 형식에 맞는 Loading Spinner**
 
 - 생성형 ai를 통해 "분석중이니깐 조금만 기다려" 라는 말을 하는 이미지를 생성해 웹툰 형식에 맞는 Loading Spinner를 구현하였습니다.
 
