@@ -1,0 +1,54 @@
+import { DEFAULT_THEME_NAME, themes } from "@/constants/theme";
+import SaJuRenderRow from "./SaJuRenderRow";
+import {
+  SaJuFontStyles,
+  SaJuGridStyles,
+  SaJuPaddingStyles,
+} from "@/constants/SaJuTable/saJuTableLayoutConstants";
+import { headers, ROWS } from "@/constants/SaJuTable/saJuTableMeta";
+
+interface SaJuTableProps {
+  data: SaJuData;
+  themeName?: string;
+}
+
+export default function SaJuTable({
+  data,
+  themeName = DEFAULT_THEME_NAME,
+}: SaJuTableProps) {
+  const currentTheme = themes[themeName];
+
+  return (
+    <div>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: SaJuGridStyles.row.gridTemplateColumns,
+          borderBottom: "2px solid black",
+        }}
+      >
+        {headers.map((head, i) => (
+          <div
+            key={i}
+            style={{
+              ...currentTheme.getHeaderCellStyle(i, headers.length),
+              ...SaJuPaddingStyles.headerCell,
+            }}
+          >
+            {head && <span style={SaJuFontStyles.header}>{head}</span>}
+          </div>
+        ))}
+      </div>
+
+      {ROWS.map(({ index, title, dataKey }) => (
+        <SaJuRenderRow
+          key={dataKey}
+          index={index}
+          title={title}
+          row={data[dataKey]}
+          theme={currentTheme}
+        />
+      ))}
+    </div>
+  );
+}

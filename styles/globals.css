@@ -7,6 +7,11 @@
   --foreground: #171717;
 }
 
+/* generateClampFontSize 동작용 추후 개선 필요 */
+html {
+  font-size: 16px;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
