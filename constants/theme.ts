@@ -60,7 +60,7 @@ export const cheongwolTheme: ThemeSpecificStyles = {
       justifyContent: "center",
       width: generateClampFontSize(1, 70),
       height: generateClampFontSize(1, 70),
-      borderRadius: "15px",
+      borderRadius: generateClampFontSize(1, 15),
       backgroundColor,
       color: textColor,
       border,
