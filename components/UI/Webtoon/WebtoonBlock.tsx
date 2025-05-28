@@ -22,6 +22,7 @@ export function WebtoonBlock({
         zIndex,
         marginTop: topM,
         marginBottom: bottomM,
+        containerType: "inline-size",
       }}
     >
       {children}
