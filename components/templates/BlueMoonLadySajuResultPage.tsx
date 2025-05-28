@@ -38,16 +38,8 @@ const BlueMoonLadySajuResultPage = ({}: BlueMoonLadySajuResultPageProps) => {
       </WebtoonImageBlock>
 
       <WebtoonBlock customClassName="w-[95%] relative" topM={"-5%"}>
-        <WebtoonText
-          textKey="SAJU_TITLE_1" // 해당 textKey가 webtoonTextMeta에 정의되어 있어야 함
-          maxFontSize={25}
-          minFontSize={1}
-        />
-        <WebtoonText
-          textKey="SAJU_TITLE_2" // 해당 textKey가 webtoonTextMeta에 정의되어 있어야 함
-          maxFontSize={30}
-          minFontSize={1}
-        />
+        <WebtoonText textKey="SAJU_TITLE_1" maxFontSize={25} minFontSize={1} />
+        <WebtoonText textKey="SAJU_TITLE_2" maxFontSize={30} minFontSize={1} />
 
         <WebtoonDecorativeElement decorativeKey="SAJU_TABLE_HEADER_CLOUD_A" />
         <WebtoonDecorativeElement decorativeKey="SAJU_TABLE_HEADER_CLOUD_B" />

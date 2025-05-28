@@ -1,7 +1,3 @@
-// 경로: components/UI/Webtoon/WebtoonDecorativeElement.tsx
-
-"use client";
-
 import Image from "next/image";
 import {
   webtoonDecorativeMeta,

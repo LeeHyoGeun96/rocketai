@@ -1,6 +1,4 @@
-// 경로: constants/bluemoonladysaju/webtoonDecorativeMeta.ts
-
-import { generateClampFontSize } from "@/utils/generateClampFontSize"; // 경로 확인
+import { generateClampFontSize } from "@/utils/generateClampFontSize";
 import { decorativeImagePaths } from "@/constants/bluemoonladysaju/imagePaths";
 import { ImagePath } from "@/constants/bluemoonladysaju/webtoonImagesMeta";
 

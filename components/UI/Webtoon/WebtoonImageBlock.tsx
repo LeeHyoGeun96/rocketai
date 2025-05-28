@@ -1,4 +1,3 @@
-// components/WebtoonImage.tsx
 import {
   ImagePath,
   webtoonImagesMeta,

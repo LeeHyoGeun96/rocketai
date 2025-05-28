@@ -1,4 +1,3 @@
-// pages/api/getSaJu.ts
 import type { NextApiRequest, NextApiResponse } from "next";
 import { dummySaJu } from "@/data/dummySaJuData";
 

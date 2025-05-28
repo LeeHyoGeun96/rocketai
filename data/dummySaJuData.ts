@@ -1,4 +1,3 @@
-// dummyData.ts
 export const dummySaJu: SaJuData = {
   tenStar: {
     hour: { label: "傷官", subLabel: "상관" },

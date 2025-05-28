@@ -1,4 +1,3 @@
-// stores/useUserStore.ts
 import { defaultUserData } from "@/constants/userDefaults";
 import { create } from "zustand";
 
