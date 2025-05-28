@@ -15,8 +15,8 @@ interface WebtoonTextMetaItem {
 export interface WebtoonTextMeta {
   IMG1_BUBBLE: WebtoonTextMetaItem;
   IMG3_BUBBLE: WebtoonTextMetaItem;
-  SAJU_SUMMARY_1: WebtoonTextMetaItem;
-  SAJU_SUMMARY_2: WebtoonTextMetaItem;
+  SAJU_TITLE_1: WebtoonTextMetaItem;
+  SAJU_TITLE_2: WebtoonTextMetaItem;
 }
 
 export const webtoonTextMeta: WebtoonTextMeta = {
@@ -30,14 +30,14 @@ export const webtoonTextMeta: WebtoonTextMeta = {
     top: "13%",
     left: "14%",
   },
-  SAJU_SUMMARY_1: {
+  SAJU_TITLE_1: {
     textTemplate: `{{name}}님의 사주`,
     top: "9%",
     left: "50%",
     transform: "translate(-50%, -50%)",
     className: "w-full",
   },
-  SAJU_SUMMARY_2: {
+  SAJU_TITLE_2: {
     textTemplate: `{{birthYear}}년 {{birthMonth}}월{{birthDay}}일 {{birthTime}}`,
     top: "14%",
     left: "50%",

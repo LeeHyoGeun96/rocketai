@@ -42,11 +42,10 @@ export const WebtoonText = ({
   const variables = { name, birthYear, birthMonth, birthDay, birthTime };
 
   let bubbleText = "";
-
   let style: React.CSSProperties = {};
+  let bubbleClassName = "";
 
   if (text) {
-    // text가 들어오면 applyTemplate 사용
     bubbleText = applyTemplate(text, variables);
   } else if (textKey) {
     const bubble = webtoonTextMeta[textKey];
@@ -58,7 +57,14 @@ export const WebtoonText = ({
 
     bubbleText = applyTemplate(bubble.textTemplate, variables);
 
-    const { top, bottom, left, right } = bubble;
+    const {
+      top,
+      bottom,
+      left,
+      right,
+      transform,
+      className: bubbleCls,
+    } = bubble;
 
     // imagePath 기준 스타일 우선 적용
     style = {
@@ -66,7 +72,12 @@ export const WebtoonText = ({
       ...(bottom && !bottomM && { bottom }),
       ...(left && !leftM && { left }),
       ...(right && !rightM && { right }),
+      ...(transform && { transform }),
     };
+
+    if (bubbleCls) {
+      bubbleClassName = bubbleCls;
+    }
   }
 
   // props 기준 스타일이 덮어쓰도록 우선순위 처리
@@ -88,11 +99,10 @@ export const WebtoonText = ({
       ? "text-right"
       : "text-center";
 
+  const combinedClassName = `absolute w-fit ${className} ${bubbleClassName} ${textAlignClass}`;
+
   return (
-    <div
-      className={`absolute w-fit ${className} ${textAlignClass}`}
-      style={style}
-    >
+    <div className={combinedClassName} style={style}>
       {lines.map((line, index) => (
         <p
           key={index}
