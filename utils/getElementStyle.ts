@@ -6,10 +6,10 @@ export default function getElementStyle(label?: string) {
     陰金: {
       backgroundColor: "#fff",
       textColor: "#292929",
-      border: "2px solid black",
+      border: "1px solid black",
     },
     陽火: {
-      backgroundColor: "#292929",
+      backgroundColor: "#c23030",
       textColor: "#fff",
     },
     陽水: {
@@ -21,8 +21,8 @@ export default function getElementStyle(label?: string) {
       textColor: "#fff",
     },
     陽土: {
-      backgroundColor: "#f5f3ec",
-      textColor: "#292929",
+      backgroundColor: "#896c0c",
+      textColor: "#fff",
     },
   };
 

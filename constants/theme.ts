@@ -43,6 +43,7 @@ export const cheongwolTheme: ThemeSpecificStyles = {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+      textAlign: "center",
       borderRight:
         index === totalDataCells - 1 ? "2px solid black" : "1px solid black",
     };
@@ -59,8 +60,7 @@ export const cheongwolTheme: ThemeSpecificStyles = {
       justifyContent: "center",
       width: generateClampFontSize(1, 70),
       height: generateClampFontSize(1, 70),
-      gap: generateClampFontSize(1, 5),
-      borderRadius: "10px",
+      borderRadius: "15px",
       backgroundColor,
       color: textColor,
       border,

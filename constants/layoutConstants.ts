@@ -3,21 +3,22 @@ import { generateClampFontSize } from "@/utils/generateClampFontSize";
 export const MAX_WIDTH = 448;
 
 export const SaJuFontStyles = {
-  header: { fontSize: generateClampFontSize(3, 28) },
-  titleHanja: { fontSize: generateClampFontSize(3, 12) },
-  titleHangle: { fontSize: generateClampFontSize(3, 10) },
-  cellMainLabel: { fontSize: generateClampFontSize(3, 16) },
-  cellSubLabel: { fontSize: generateClampFontSize(3, 12) },
-  cellKoreanLabel: { fontSize: generateClampFontSize(3, 12) },
-  cellElementLabel: { fontSize: generateClampFontSize(3, 14) },
+  header: { fontSize: generateClampFontSize(1, 20.92) },
+  rowTitleHanja: { fontSize: generateClampFontSize(1, 12) },
+  rowTitleHangle: { fontSize: generateClampFontSize(1, 7.82) },
+  cellMainLabel: { fontSize: generateClampFontSize(1, 14.6) },
+  cellSubLabel: { fontSize: generateClampFontSize(1, 9.78) },
+  cellElementHangle: { fontSize: generateClampFontSize(1, 7) },
+  cellElementHanja: { fontSize: generateClampFontSize(1, 25.11) },
+  cellElementElement: { fontSize: generateClampFontSize(1, 8.37) },
 };
 
 export const SaJuPaddingStyles = {
   cell: {
-    padding: `${generateClampFontSize(1, 8)} ${generateClampFontSize(3, 10)}`,
+    padding: `${generateClampFontSize(1, 5)}`,
   },
   headerCell: {
-    padding: `${generateClampFontSize(1, 12)} ${generateClampFontSize(3, 14)}`,
+    padding: `${generateClampFontSize(1, 12)} `,
   },
 
   cellElementLabel: {
@@ -27,6 +28,6 @@ export const SaJuPaddingStyles = {
 
 export const SaJuGridStyles = {
   row: {
-    gridTemplateColumns: `minmax(1px, 0.8fr) minmax(1px, 1fr) minmax(1px, 1fr) minmax(1px, 1fr) minmax(1px, 1fr)`,
+    gridTemplateColumns: `minmax(1px, 0.65fr) minmax(1px, 1fr) minmax(1px, 1fr) minmax(1px, 1fr) minmax(1px, 1fr)`,
   },
 };

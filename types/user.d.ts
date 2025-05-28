@@ -4,6 +4,6 @@ interface UserData {
   birthYear: string;
   birthMonth: string;
   birthDay: string;
-  birthTime: string | null;
+  birthTime: string;
   birthType: "SOLAR" | "LUNAR";
 }

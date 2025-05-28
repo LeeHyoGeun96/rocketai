@@ -22,8 +22,8 @@ export default function SaJuRenderRow({
           ...theme.getRowTitleCellStyle(index),
         }}
       >
-        <p style={SaJuFontStyles.titleHanja}>{title.hanjaTitle}</p>
-        <p style={{ ...SaJuFontStyles.titleHangle, textAlign: "center" }}>
+        <p style={SaJuFontStyles.rowTitleHanja}>{title.hanjaTitle}</p>
+        <p style={{ ...SaJuFontStyles.rowTitleHangle, textAlign: "center" }}>
           ({title.hangleTitle})
         </p>
       </div>

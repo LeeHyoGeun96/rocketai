@@ -12,7 +12,7 @@ export const webtoonImagesMeta: Record<
     width: number;
     height: number;
     bubble?: {
-      text: (name: string) => string;
+      textTemplate: string;
       top?: string;
       left?: string;
       right?: string;
@@ -24,8 +24,8 @@ export const webtoonImagesMeta: Record<
     width: 375,
     height: 774,
     bubble: {
-      text: (name) =>
-        `이제 본격적으로 \n${name}님의 사주팔자를 \n분석해볼 차례네요.`,
+      textTemplate:
+        "이제 본격적으로 \n{{name}}님의 사주팔자를 \n분석해볼 차례네요.",
       top: "85%",
       left: "16%",
     },
@@ -38,7 +38,7 @@ export const webtoonImagesMeta: Record<
     width: 375,
     height: 403,
     bubble: {
-      text: (name) => `제가 ${name}님의 사주를\n보기 쉽게 표로 정리했어요`,
+      textTemplate: "제가 {{name}}님의 사주를\n보기 쉽게 표로 정리했어요",
       top: "13%",
       left: "14%",
     },
