@@ -1,5 +1,3 @@
-// components/WebtoonBlock.tsx
-
 export interface WebtoonBlockProps {
   zIndex?: string;
   topM?: string;
