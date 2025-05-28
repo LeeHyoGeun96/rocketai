@@ -32,7 +32,7 @@ export default function Home() {
             minFontSize={1}
           />
         </WebtoonImageBlock>
-        <WebtoonBlock customClassName="w-[95%]">
+        <WebtoonBlock customClassName="w-[95%]" topM={"-5%"}>
           <WebtoonText
             maxFontSize={25}
             minFontSize={1}

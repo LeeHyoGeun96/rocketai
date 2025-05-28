@@ -40,4 +40,10 @@ interface ThemeSpecificStyles {
   getRowTitleCellStyle: (index: number) => React.CSSProperties;
 
   getElementCellStyle: (elementLabel: string) => React.CSSProperties;
+
+  getSaJuTableBackGroundStyle: () => React.CSSProperties;
+
+  getInnerBoxStyle1: () => React.CSSProperties;
+
+  getInnerBoxStyle2: () => React.CSSProperties;
 }
