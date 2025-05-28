@@ -31,7 +31,6 @@ const HomePage: NextPage<HomePageProps> = ({ pageTitle, pageDescription }) => {
         <meta name="description" content={pageDescription} />
       </Head>
 
-      {/* 분리된 템플릿 컴포넌트 사용 */}
       <BlueMoonLadySajuResultPage />
     </>
   );
