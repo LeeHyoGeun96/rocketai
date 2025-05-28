@@ -46,44 +46,80 @@
 ## 📁 프로젝트 구조
 
 ```
-roketai/
-├── components/ # UI 컴포넌트
-│ ├── UI/ # 재사용 가능한 기본 UI 요소
-│ │ ├── SaJuTable/ # 사주 테이블 관련 컴포넌트
-│ │ │ ├── SaJuCell.tsx # 사주 표의 각 셀
-│ │ │ └── SaJuTable.tsx # 사주 표 전체 컨테이너
-│ │ └── Webtoon/ # 웹툰 형식 UI 컴포넌트
-│ │ ├── WebtoonBlock.tsx # 웹툰의 기본 블록 단위
-│ │ ├── WebtoonImageBlock.tsx # 웹툰 이미지 표시 블록
-│ │ └── WebtoonText.tsx # 웹툰 내 텍스트 (말풍선 등)
-│ └── templates/ # 페이지 레이아웃 템플릿
-│ └── BlueMoonLadySajuResultPage.tsx # 메인 사주 결과 페이지
-├── constants/ # 상수 데이터 (테마, 메타 정보 등)
-│ ├── bluemoonladysaju/ # 서비스 특정 상수
-│ │ ├── imagePaths.ts # 웹툰 이미지 경로
-│ │ ├── webtoonDecorativeMeta.ts # 웹툰 장식 요소 메타 정보
-│ │ └── webtoonTextMeta.ts # 웹툰 텍스트(말풍선) 메타 정보
-│ └── theme.ts # 테마 관련 설정
-├── data/ # (더미) 데이터
-│ └── dummySaJuData.ts # 사주 더미 데이터
-├── hooks/ # 커스텀 React 훅
-│ └── useInitUserData.ts # 사용자 정보 초기화 훅
-├── pages/ # Next.js 페이지 및 API 라우트
-│ ├── api/
-│ │ └── getSaJu.ts # 사주 데이터 요청 API
-│ └── index.tsx # 메인 페이지
-├── public/ # 정적 에셋 (이미지 등)
-├── store/ # Zustand 상태 관리 스토어
-│ └── userStore.ts # 사용자 정보 스토어
-├── types/ # TypeScript 타입 정의
-│ ├── saju.d.ts # 사주 관련 타입
-│ └── user.d.ts # 사용자 정보 관련 타입
-├── utils/ # 유틸리티 함수
-│ ├── applyTemplate.ts # 템플릿 문자열 치환 함수
-│ └── generateClampFontSize.ts # 반응형 폰트 크기 생성 함수
-├── next.config.ts # Next.js 설정
-├── tailwind.config.ts # Tailwind CSS 설정
-└── tsconfig.json # TypeScript 설정
+├───📁 components/
+│   ├───📁 UI/
+│   │   ├───📁 SaJuTable/
+│   │   │   ├───📄 SaJuCell.tsx
+│   │   │   ├───📄 SaJuRenderRow.tsx
+│   │   │   ├───📄 SaJuTable.tsx
+│   │   │   ├───📄 SaJuTableBackGround.tsx
+│   │   │   └───📄 SaJuTableClient.tsx
+│   │   ├───📁 Webtoon/
+│   │   │   ├───📄 WebtoonBlock.tsx
+│   │   │   ├───📄 WebtoonContainer.tsx
+│   │   │   ├───📄 WebtoonDecorativeElement.tsx
+│   │   │   ├───📄 WebtoonImageBlock.tsx
+│   │   │   └───📄 WebtoonText.tsx
+│   │   ├───📁 common/
+│   │   │   └───📄 Spinner.tsx
+│   │   ├───📄 Header.tsx
+│   │   └───📄 Layout.tsx
+│   ├───📁 templates/
+│   │   └───📄 BlueMoonLadySajuResultPage.tsx
+│   └───📄 ClientInit.tsx
+├───📁 constants/
+│   ├───📁 SaJuTable/
+│   │   ├───📄 saJuTableLayoutConstants.ts
+│   │   └───📄 saJuTableMeta.ts
+│   ├───📁 bluemoonladysaju/
+│   │   ├───📄 imagePaths.ts
+│   │   ├───📄 webtoonDecorativeMeta.ts
+│   │   ├───📄 webtoonImagesMeta.ts
+│   │   └───📄 webtoonTextMeta.ts
+│   ├───📄 layout.ts
+│   ├───📄 theme.ts
+│   └───📄 userDefaults.ts
+├───📁 data/
+│   └───📄 dummySaJuData.ts
+├───📁 hooks/
+│   └───📄 useInitUserData.ts
+├───📁 pages/
+│   ├───📁 api/
+│   │   └───📄 getSaJu.ts
+│   ├───📁 blank/
+│   │   └───📄 index.tsx
+│   ├───📄 _app.tsx
+│   ├───📄 _document.tsx
+│   └───📄 index.tsx
+├───📁 public/
+│   ├───📁 images/
+│   │   └───📁 bluemoonladysaju/
+│   │       ├───📁 decorations/
+│   │       │   ├───📄 cloud_style_a.png
+│   │       │   └───📄 cloud_style_b.png
+│   │       ├───📁 loading/
+│   │       │   └───📄 analyzing.png
+│   │       ├───📄 1.png
+│   │       ├───📄 2.png
+│   │       └───📄 3.png
+│   ├───📄 favicon.ico
+│   ├───📄 file.svg
+│   ├───📄 globe.svg
+│   ├───📄 next.svg
+│   ├───📄 vercel.svg
+│   └───📄 window.svg
+├───📁 store/
+│   └───📄 userStore.ts
+├───📁 styles/
+│   └───📄 globals.css
+├───📁 types/
+│   ├───📄 saju.d.ts
+│   └───📄 user.d.ts
+├───📁 utils/
+│   ├───📄 applyTemplate.ts
+│   ├───📄 generateClampFontSize.ts
+│   └───📄 getElementStyle.ts
+
 ```
 
 ## 🚀 실행 방법
