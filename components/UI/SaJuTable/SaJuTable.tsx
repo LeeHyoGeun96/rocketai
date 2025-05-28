@@ -4,8 +4,8 @@ import {
   SaJuFontStyles,
   SaJuGridStyles,
   SaJuPaddingStyles,
-} from "@/constants/layoutConstants";
-import { headers, ROWS } from "@/constants/SaJuTable/SaJuTableMeta";
+} from "@/constants/SaJuTable/saJuTableLayoutConstants";
+import { headers, ROWS } from "@/constants/SaJuTable/saJuTableMeta";
 
 interface SaJuTableProps {
   data: SaJuData;

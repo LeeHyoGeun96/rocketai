@@ -1,5 +1,5 @@
 // stores/useUserStore.ts
-import { defaultUserData } from "@/constants/bluemoonladysaju/userDefaults";
+import { defaultUserData } from "@/constants/userDefaults";
 import { create } from "zustand";
 
 interface UserStore {

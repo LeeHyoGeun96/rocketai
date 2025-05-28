@@ -1,4 +1,7 @@
-import { SaJuFontStyles, SaJuPaddingStyles } from "@/constants/layoutConstants";
+import {
+  SaJuFontStyles,
+  SaJuPaddingStyles,
+} from "@/constants/SaJuTable/saJuTableLayoutConstants";
 import { themes } from "@/constants/theme";
 
 interface SaJuCellProps {

@@ -1,4 +1,4 @@
-import { MAX_WIDTH } from "@/constants/layoutConstants";
+import { MAX_WIDTH } from "@/constants/SaJuTable/saJuTableLayoutConstants";
 
 /**
  * px 기준 값을 받아서 clamp() 형태의 cqi 단위 font-size 반환

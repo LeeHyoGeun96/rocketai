@@ -1,4 +1,4 @@
-import { defaultUserData } from "@/constants/bluemoonladysaju/userDefaults";
+import { defaultUserData } from "@/constants/userDefaults";
 import { useUserStore } from "@/store/userStore";
 import { useEffect } from "react";
 

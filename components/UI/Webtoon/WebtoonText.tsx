@@ -2,15 +2,15 @@
 
 import { useUserStore } from "@/store/userStore";
 import { generateClampFontSize } from "@/utils/generateClampFontSize";
-import {
-  ImagePath,
-  webtoonImagesMeta,
-} from "@/constants/bluemoonladysaju/webtoonImagesMeta";
 import applyTemplate from "@/utils/applyTemplate";
+import {
+  WebtoonTextKey,
+  webtoonTextMeta,
+} from "@/constants/bluemoonladysaju/webtoonTextMeta";
 
 interface WebtoonTextProps {
   className?: string;
-  imagePath?: ImagePath;
+  textKey?: WebtoonTextKey;
   text?: string;
   sort?: "left" | "right" | "center";
   maxFontSize?: number;
@@ -24,7 +24,7 @@ interface WebtoonTextProps {
 
 export const WebtoonText = ({
   className = "",
-  imagePath,
+  textKey,
   text,
   sort = "center",
   maxFontSize = 16,
@@ -48,11 +48,11 @@ export const WebtoonText = ({
   if (text) {
     // text가 들어오면 applyTemplate 사용
     bubbleText = applyTemplate(text, variables);
-  } else if (imagePath) {
-    const bubble = webtoonImagesMeta[imagePath]?.bubble;
+  } else if (textKey) {
+    const bubble = webtoonTextMeta[textKey];
 
     if (!bubble) {
-      console.warn(`Speech bubble not found for imagePath: ${imagePath}`);
+      console.warn(`Speech bubble not found for textKey: ${textKey}`);
       return null;
     }
 
@@ -96,7 +96,7 @@ export const WebtoonText = ({
       {lines.map((line, index) => (
         <p
           key={index}
-          className="leading-snug break-words"
+          className="leading-snug"
           style={{ fontSize, marginBottom: paragraphSpacing }}
         >
           {line || "\u00A0"}

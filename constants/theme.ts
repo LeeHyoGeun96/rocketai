@@ -1,5 +1,5 @@
 import getElementStyle from "@/utils/getElementStyle";
-import { SaJuGridStyles } from "./layoutConstants";
+import { SaJuGridStyles } from "./SaJuTable/saJuTableLayoutConstants";
 import { generateClampFontSize } from "@/utils/generateClampFontSize";
 
 export const cheongwolTheme: ThemeSpecificStyles = {

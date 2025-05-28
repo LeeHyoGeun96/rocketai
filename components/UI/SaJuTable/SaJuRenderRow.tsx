@@ -1,6 +1,6 @@
-import { SaJuFontStyles } from "@/constants/layoutConstants";
+import { SaJuFontStyles } from "@/constants/SaJuTable/saJuTableLayoutConstants";
 import SaJuCell from "./SaJuCell";
-import { TIME_KEYS } from "@/constants/SaJuTable/SaJuTableMeta";
+import { TIME_KEYS } from "@/constants/SaJuTable/saJuTableMeta";
 
 interface SaJuRenderRowProps {
   index: number;
