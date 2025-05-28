@@ -23,12 +23,12 @@ export default function Header() {
         </li>
         <li>
           <Link
-            href="/custom"
+            href="/blank"
             className={`text-2xl hover:text-sky-600 transition-colors ${
-              router.pathname === "/custom" ? activeLinkStyle : ""
+              router.pathname === "/blank" ? activeLinkStyle : ""
             }`}
           >
-            Custom
+            Blank
           </Link>
         </li>
       </ul>
