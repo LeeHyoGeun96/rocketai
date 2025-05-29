@@ -23,12 +23,12 @@ export const webtoonTextMeta: WebtoonTextMeta = {
   IMG1_BUBBLE: {
     textTemplate: `이제 본격적으로 \n{{name}}님의 사주팔자를 \n분석해볼 차례네요.`,
     top: "85%",
-    left: "16%",
+    left: "14.5%",
   },
   IMG3_BUBBLE: {
     textTemplate: `제가 {{name}}님의 사주를\n보기 쉽게 표로 정리했어요`,
-    top: "13%",
-    left: "14%",
+    top: "12%",
+    left: "11.5%",
   },
   SAJU_TITLE_1: {
     textTemplate: `{{name}}님의 사주`,
