@@ -1,4 +1,7 @@
-import { DEFAULT_THEME_NAME, themes } from "@/constants/theme";
+import {
+  DEFAULT_THEME_NAME,
+  themes,
+} from "@/constants/SaJuTable/saJuTableTheme";
 import SaJuRenderRow from "./SaJuRenderRow";
 import {
   SaJuFontStyles,

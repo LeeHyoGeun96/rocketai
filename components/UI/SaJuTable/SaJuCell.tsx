@@ -2,19 +2,26 @@ import {
   SaJuFontStyles,
   SaJuPaddingStyles,
 } from "@/constants/SaJuTable/saJuTableLayoutConstants";
-import { themes } from "@/constants/theme";
+import {
+  DEFAULT_THEME_NAME,
+  themes,
+} from "@/constants/SaJuTable/saJuTableTheme";
 
 interface SaJuCellProps {
   cell?: SaJuCell;
+  themeName?: string;
 }
 
-export default function SaJuCell({ cell }: SaJuCellProps) {
+export default function SaJuCell({
+  cell,
+  themeName = DEFAULT_THEME_NAME,
+}: SaJuCellProps) {
   if (!cell) return null;
 
   return (
     <div style={{ ...SaJuPaddingStyles.cell }}>
       {cell.elementLabel ? (
-        <div style={themes["청월"].getElementCellStyle(cell.elementLabel)}>
+        <div style={themes[themeName].getElementCellStyle(cell.elementLabel)}>
           <p style={{ ...SaJuFontStyles.cellElementHangle }}>
             {cell.koreanLabel}
           </p>
