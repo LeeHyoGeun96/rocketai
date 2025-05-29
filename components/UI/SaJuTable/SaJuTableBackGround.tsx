@@ -1,32 +1,36 @@
 import {
   DEFAULT_THEME_NAME,
+  ThemeDefinition,
   themes,
-} from "@/constants/SaJuTable/saJuTableTheme";
+} from "@/constants/themes";
 
 interface SaJuTableBackGroundProps {
-  theme?: string;
+  themeName?: string;
   children: React.ReactNode;
 }
 
 export default function SaJuTableBackGround({
-  theme = DEFAULT_THEME_NAME,
+  themeName = DEFAULT_THEME_NAME,
   children,
 }: SaJuTableBackGroundProps) {
+  const currentTheme: ThemeDefinition =
+    themes[themeName] || themes[DEFAULT_THEME_NAME];
+
   return (
     <div
       className="w-full h-full"
       style={{
-        ...themes[theme].getSaJuTableBackGroundStyle(),
+        ...currentTheme.getSaJuTableBackGroundStyle(),
       }}
     >
       <div
         style={{
-          ...themes[theme].getInnerBoxStyle1(),
+          ...currentTheme.getInnerBoxStyle1(),
         }}
       />
       <div
         style={{
-          ...themes[theme].getInnerBoxStyle2(),
+          ...currentTheme.getInnerBoxStyle2(),
         }}
       />
       {children}

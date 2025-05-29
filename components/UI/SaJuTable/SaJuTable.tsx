@@ -1,7 +1,3 @@
-import {
-  DEFAULT_THEME_NAME,
-  themes,
-} from "@/constants/SaJuTable/saJuTableTheme";
 import SaJuRenderRow from "./SaJuRenderRow";
 import {
   SaJuFontStyles,
@@ -9,6 +5,11 @@ import {
   SaJuPaddingStyles,
 } from "@/constants/SaJuTable/saJuTableLayoutConstants";
 import { headers, ROWS } from "@/constants/SaJuTable/saJuTableMeta";
+import {
+  DEFAULT_THEME_NAME,
+  ThemeDefinition,
+  themes,
+} from "@/constants/themes";
 
 interface SaJuTableProps {
   data: SaJuData;
@@ -19,7 +20,8 @@ export default function SaJuTable({
   data,
   themeName = DEFAULT_THEME_NAME,
 }: SaJuTableProps) {
-  const currentTheme = themes[themeName];
+  const currentTheme: ThemeDefinition =
+    themes[themeName] || themes[DEFAULT_THEME_NAME];
 
   return (
     <div>
@@ -49,7 +51,7 @@ export default function SaJuTable({
           index={index}
           title={title}
           row={data[dataKey]}
-          theme={currentTheme}
+          themeName={themeName}
         />
       ))}
     </div>

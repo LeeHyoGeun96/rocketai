@@ -1,25 +1,33 @@
-import { SaJuFontStyles } from "@/constants/SaJuTable/saJuTableLayoutConstants";
 import SaJuCell from "./SaJuCell";
 import { TIME_KEYS } from "@/constants/SaJuTable/saJuTableMeta";
+import { SaJuFontStyles } from "@/constants/SaJuTable/saJuTableLayoutConstants";
+import {
+  DEFAULT_THEME_NAME,
+  ThemeDefinition,
+  themes,
+} from "@/constants/themes";
 
 interface SaJuRenderRowProps {
   index: number;
   title: { hanjaTitle: string; hangleTitle: string };
   row: SaJuColumn;
-  theme: ThemeSpecificStyles;
+  themeName?: string;
 }
 
 export default function SaJuRenderRow({
   title,
   row,
-  theme,
   index,
+  themeName = DEFAULT_THEME_NAME,
 }: SaJuRenderRowProps) {
+  const currentTheme: ThemeDefinition =
+    themes[themeName] || themes[DEFAULT_THEME_NAME];
+
   return (
-    <div style={{ ...theme.getRowCellStyle(index) }}>
+    <div style={{ ...currentTheme.getRowCellStyle(index) }}>
       <div
         style={{
-          ...theme.getRowTitleCellStyle(index),
+          ...currentTheme.getRowTitleCellStyle(index),
         }}
       >
         <p style={SaJuFontStyles.rowTitleHanja}>{title.hanjaTitle}</p>
@@ -34,7 +42,7 @@ export default function SaJuRenderRow({
           <div
             key={key}
             style={{
-              ...theme.getRowDataCellStyle(idx, TIME_KEYS.length),
+              ...currentTheme.getRowDataCellStyle(idx, TIME_KEYS.length),
             }}
           >
             <SaJuCell cell={cell} />

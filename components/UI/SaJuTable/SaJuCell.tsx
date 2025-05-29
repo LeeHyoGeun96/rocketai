@@ -1,11 +1,13 @@
+import React from "react";
 import {
   SaJuFontStyles,
   SaJuPaddingStyles,
-} from "@/constants/SaJuTable/saJuTableLayoutConstants";
+} from "@/constants/SaJuTable/saJuTableLayoutConstants"; // 경로는 실제 프로젝트에 맞게
 import {
-  DEFAULT_THEME_NAME,
   themes,
-} from "@/constants/SaJuTable/saJuTableTheme";
+  DEFAULT_THEME_NAME,
+  ThemeDefinition,
+} from "@/constants/themes";
 
 interface SaJuCellProps {
   cell?: SaJuCell;
@@ -18,10 +20,13 @@ export default function SaJuCell({
 }: SaJuCellProps) {
   if (!cell) return null;
 
+  const currentTheme: ThemeDefinition =
+    themes[themeName] || themes[DEFAULT_THEME_NAME];
+
   return (
     <div style={{ ...SaJuPaddingStyles.cell }}>
       {cell.elementLabel ? (
-        <div style={themes[themeName].getElementCellStyle(cell.elementLabel)}>
+        <div style={currentTheme.getElementCellStyle(cell.elementLabel)}>
           <p style={{ ...SaJuFontStyles.cellElementHangle }}>
             {cell.koreanLabel}
           </p>
