@@ -99,15 +99,15 @@ export const WebtoonText = ({
       ? "text-right"
       : "text-center";
 
-  const combinedClassName = `absolute w-fit ${className} ${bubbleClassName} ${textAlignClass} dark:text-black`;
+  const combinedClassName = `absolute w-fit ${className} ${bubbleClassName} ${textAlignClass}`;
 
   return (
     <div className={combinedClassName} style={style}>
       {lines.map((line, index) => (
         <p
           key={index}
-          className="leading-snug"
-          style={{ fontSize, marginBottom: paragraphSpacing , color: "black"}}
+          className="leading-snug text-black dark:text-black"
+          style={{ fontSize, marginBottom: paragraphSpacing}}
         >
           {line || "\u00A0"}
         </p>
