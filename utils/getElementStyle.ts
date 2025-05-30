@@ -28,7 +28,7 @@ export default function getElementStyle(label?: string) {
 
   return (
     styleMap[label || ""] || {
-      backgroundColor: "#f3f4f6", // default: gray-100
+      backgroundColor: "#f3f4f6",
       textColor: "#000",
       border: "1px solid #d1d5db",
     }

@@ -5,9 +5,9 @@ import { ImagePath } from "@/constants/bluemoonladysaju/webtoonImagesMeta";
 export interface DecorativeElementMeta {
   src: ImagePath | string;
   altText?: string;
-  width?: string; // clamp() 문자열 등 CSS 크기 값
-  height?: string; // clamp() 문자열 등 CSS 크기 값
-  top?: string; // clamp() 문자열, "10%", "20px" 등
+  width?: string;
+  height?: string;
+  top?: string;
   left?: string;
   right?: string;
   bottom?: string;

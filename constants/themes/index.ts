@@ -1,7 +1,5 @@
-// constants/themes/index.ts
-import React from "react"; // React.CSSProperties 사용을 위해
+import React from "react";
 import { cheongwolTheme } from "./cheongwol";
-// import { starlightTheme } from './starlight'; // 만약 다른 테마가 있다면 import
 
 // 모든 테마 객체가 구현해야 할 공통 인터페이스
 export interface ThemeDefinition {

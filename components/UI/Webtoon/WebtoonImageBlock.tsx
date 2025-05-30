@@ -11,7 +11,7 @@ export interface WebtoonImageBlockProps {
   topM?: string;
   bottomM?: string;
   customClassName?: string;
-  priority?: boolean; // 중요한 이미지(LCP)에 true 설정
+  priority?: boolean;
   children?: React.ReactNode;
 }
 

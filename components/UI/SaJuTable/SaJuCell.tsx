@@ -2,7 +2,7 @@ import React from "react";
 import {
   SaJuFontStyles,
   SaJuPaddingStyles,
-} from "@/constants/SaJuTable/saJuTableLayoutConstants"; // 경로는 실제 프로젝트에 맞게
+} from "@/constants/SaJuTable/saJuTableLayoutConstants";
 import {
   themes,
   DEFAULT_THEME_NAME,

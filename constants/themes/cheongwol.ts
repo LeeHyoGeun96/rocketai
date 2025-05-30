@@ -1,11 +1,9 @@
-// constants/themes/cheongwol.ts
-import { ThemeDefinition } from "./index"; // 또는 './interfaces' 등 인터페이스 파일 경로
-import getElementStyle from "@/utils/getElementStyle"; // 실제 경로로 수정 필요
-import { SaJuGridStyles } from "@/constants/SaJuTable/saJuTableLayoutConstants"; // 실제 경로로 수정 필요
-import { generateClampFontSize } from "@/utils/generateClampFontSize"; // 실제 경로로 수정 필요
+import { ThemeDefinition } from "./index";
+import getElementStyle from "@/utils/getElementStyle";
+import { SaJuGridStyles } from "@/constants/SaJuTable/saJuTableLayoutConstants";
+import { generateClampFontSize } from "@/utils/generateClampFontSize";
 
 export const cheongwolTheme: ThemeDefinition = {
-  // --- SaJuTable Styles ---
   getHeaderCellStyle: (index: number, totalHeaders: number) => {
     const baseStyle: React.CSSProperties = {
       display: "flex",
@@ -110,23 +108,10 @@ export const cheongwolTheme: ThemeDefinition = {
     boxSizing: "border-box",
   }),
 
-  // --- Spinner Asset ---
   getSpinnerAsset: () => ({
-    src: "/images/bluemoonladysaju/loading/analyzing.png", // "청월" 테마의 스피너 이미지 경로
-    alt: "분석중 이미지 (청월 테마)", // 테마별 alt 텍스트
-    width: 1024, // 테마별 기본 너비
-    height: 1536, // 테마별 기본 높이
+    src: "/images/bluemoonladysaju/loading/analyzing.png",
+    alt: "분석중 이미지 (청월 테마)",
+    width: 1024,
+    height: 1536,
   }),
-
-  // --- 예시: 일반적인 테마 색상 ---
-  // getPrimaryColor: () => "#003366", // 청월 테마의 주 색상
-  // getSecondaryColor: () => "#e6f2ff", // 청월 테마의 보조 색상
-
-  // --- 예시: 버튼 스타일 ---
-  // getButtonVariantStyle: (variant: 'primary' | 'secondary' = 'primary') => {
-  //   if (variant === 'primary') {
-  //     return { backgroundColor: "#003366", color: "white", padding: "10px 20px", border: "none" };
-  //   }
-  //   return { backgroundColor: "#e6f2ff", color: "#003366", padding: "10px 20px", border: "1px solid #003366" };
-  // },
 };

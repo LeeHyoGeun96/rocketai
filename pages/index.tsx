@@ -22,7 +22,6 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async (
   };
 };
 
-// 페이지 컴포넌트
 const HomePage: NextPage<HomePageProps> = ({ pageTitle, pageDescription }) => {
   return (
     <>
