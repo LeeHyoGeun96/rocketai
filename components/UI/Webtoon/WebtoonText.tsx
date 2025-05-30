@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react"; // React 임포트 추가
 import { useUserStore } from "@/store/userStore";
 import { generateClampFontSize } from "@/utils/generateClampFontSize";
 import applyTemplate from "@/utils/applyTemplate";
@@ -26,7 +27,7 @@ export const WebtoonText = ({
   className = "",
   textKey,
   text,
-  sort = "center",
+  sort: propSort,
   maxFontSize = 16,
   minFontSize = 12,
   paragraphSpacing = "0",
@@ -44,9 +45,11 @@ export const WebtoonText = ({
   let bubbleText = "";
   let style: React.CSSProperties = {};
   let bubbleClassName = "";
+  let finalSort: "left" | "right" | "center" = propSort || "center";
 
   if (text) {
     bubbleText = applyTemplate(text, variables);
+    if (propSort) finalSort = propSort;
   } else if (textKey) {
     const bubble = webtoonTextMeta[textKey];
 
@@ -58,29 +61,49 @@ export const WebtoonText = ({
     bubbleText = applyTemplate(bubble.textTemplate, variables);
 
     const {
+      containerTop,
+      containerBottom,
+      containerLeft,
+      containerRight,
+      containerWidth,
+      containerHeight,
       top,
       bottom,
       left,
       right,
       transform,
       className: bubbleCls,
+      sort: metaSort,
     } = bubble;
 
-    // imagePath 기준 스타일 우선 적용
-    style = {
-      ...(top && !topM && { top }),
-      ...(bottom && !bottomM && { bottom }),
-      ...(left && !leftM && { left }),
-      ...(right && !rightM && { right }),
-      ...(transform && { transform }),
-    };
+    if (metaSort) {
+      finalSort = metaSort;
+    }
+
+    if (containerWidth) style.width = containerWidth;
+    if (containerHeight) style.height = containerHeight;
+
+    style.top = containerTop !== undefined ? containerTop : top;
+    style.left = containerLeft !== undefined ? containerLeft : left;
+    style.right = containerRight !== undefined ? containerRight : right;
+    style.bottom = containerBottom !== undefined ? containerBottom : bottom;
+
+    if (
+      right !== undefined &&
+      containerLeft === undefined &&
+      left === undefined
+    )
+      style.right = right;
+    if (bottom !== undefined && containerTop === undefined && top === undefined)
+      style.bottom = bottom;
+
+    if (transform) style.transform = transform;
 
     if (bubbleCls) {
       bubbleClassName = bubbleCls;
     }
   }
 
-  // props 기준 스타일이 덮어쓰도록 우선순위 처리
   style = {
     ...style,
     ...(topM && { marginTop: topM }),
@@ -93,20 +116,20 @@ export const WebtoonText = ({
   const fontSize = generateClampFontSize(minFontSize, maxFontSize);
 
   const textAlignClass =
-    sort === "left"
+    finalSort === "left"
       ? "text-left"
-      : sort === "right"
+      : finalSort === "right"
       ? "text-right"
       : "text-center";
 
-  const combinedClassName = `absolute w-fit ${className} ${bubbleClassName} ${textAlignClass}`;
+  const combinedClassName = `absolute ${className} ${bubbleClassName} ${textAlignClass}`;
 
   return (
     <div className={combinedClassName} style={style}>
       {lines.map((line, index) => (
         <p
           key={index}
-          className="leading-snug text-black dark:text-black"
+          className="leading-snug"
           style={{
             fontSize,
             marginBottom: paragraphSpacing,
