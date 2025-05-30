@@ -99,7 +99,7 @@ export const WebtoonText = ({
       ? "text-right"
       : "text-center";
 
-  const combinedClassName = `absolute w-fit ${className} ${bubbleClassName} ${textAlignClass}`;
+  const combinedClassName = `absolute w-fit ${className} ${bubbleClassName} ${textAlignClass} dark:black`;
 
   return (
     <div className={combinedClassName} style={style}>
