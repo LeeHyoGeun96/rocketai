@@ -107,7 +107,8 @@ export const WebtoonText = ({
         <p
           key={index}
           className="leading-snug text-black dark:text-black"
-          style={{ fontSize, marginBottom: paragraphSpacing}}
+          style={{ fontSize, marginBottom: paragraphSpacing
+color:"black",}}
         >
           {line || "\u00A0"}
         </p>
